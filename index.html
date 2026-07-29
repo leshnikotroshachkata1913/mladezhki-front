@@ -26,7 +26,19 @@
   .logo-word b{font-weight:800}
   .nav-links{display:flex;align-items:center;gap:32px}
   .nav-links a{color:#b9b9c2;text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.04em}
-  .nav-links a:hover{color:#fff}
+  .nav-links a:hover,.nav-links a.active{color:#fff}
+  .nav-links a.active{position:relative}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;border-radius:2px;background:var(--red-bright)}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:10px;margin-left:6px}
+  .burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;margin:5px 0;transition:transform .2s,opacity .2s}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mmenu{display:none;background:var(--ink);border-top:1px solid #23232e}
+  .mmenu.open{display:block}
+  .mmenu a{display:block;padding:16px 32px;color:#d8d8de;text-decoration:none;font-size:16px;font-weight:600;border-bottom:1px solid #1c1c26}
+  .mmenu a:hover{color:#fff;background:var(--ink-2)}
+  .mmenu a.cta{color:var(--red-bright)}
   .btn{display:inline-block;padding:13px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;letter-spacing:0.02em;border:none;cursor:pointer;font-family:inherit}
   .btn-red{background:var(--red-bright);color:#fff}
   .btn-red:hover{background:#c92310}
@@ -167,6 +179,7 @@
     .mgrid,.jgrid{grid-template-columns:1fr}
     .stats .wrap{flex-wrap:wrap}
     .nav-links a:not(.btn){display:none}
+    .burger{display:block}
   }
   @media (max-width:600px){
     .wrap{padding:0 20px}
@@ -216,13 +229,23 @@
       <span class="logo-word">младежки <b>фронт</b></span>
     </a>
     <nav class="nav-links">
-      <a href="#about">Инициативата</a>
-      <a href="#data">Данните</a>
-      <a href="#models">Моделите</a>
-      <a href="#event">Събитието</a>
+      <a href="#about" data-spy>Инициативата</a>
+      <a href="#data" data-spy>Данните</a>
+      <a href="#models" data-spy>Моделите</a>
+      <a href="#event" data-spy>Събитието</a>
       <a class="btn btn-red" href="#join">Включи се</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="mmenu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </div>
+  <nav class="mmenu" id="mmenu">
+    <a href="#about">Инициативата</a>
+    <a href="#data">Данните</a>
+    <a href="#models">Моделите</a>
+    <a href="#event">Събитието</a>
+    <a class="cta" href="#join">Включи се →</a>
+  </nav>
 </header>
 
 <section class="hero" id="top">
@@ -463,8 +486,8 @@
       <div class="slot"><span class="t">20:00</span><div><h4>Дискусия и networking</h4><p>Отворен разговор с екипа.</p></div></div>
     </div>
     <div class="event-cta">
-      <span class="btn btn-soon" id="event-link">Линк за регистрация — очаквай скоро</span>
-      <span class="event-note">Междувременно се запиши по-долу — ще ти пишем първи, щом регистрацията отвори.</span>
+      <a class="btn btn-red" href="#join" id="event-link">Извести ме, щом регистрацията отвори</a>
+      <span class="event-note">Линкът за регистрация идва скоро — запиши се и ще ти пишем първи.</span>
     </div>
   </div>
 </section>
@@ -481,9 +504,12 @@
         <li><b>Събития</b> — организирай представянията и дискусиите.</li>
         <li><b>Доброволец</b> — включи се, когато има нужда от ръце.</li>
       </ul>
-      <form class="jform" action="https://formsubmit.co/gjelev99@gmail.com" method="POST">
+      <form class="jform" id="jform" action="https://formsubmit.co/gjelev99@gmail.com" method="POST">
+        <div class="jok" id="jok" hidden style="background:#eef8f2;border:1px solid #bfe3cf;border-radius:10px;padding:16px 18px;margin-bottom:20px;font-size:14.5px;line-height:1.55;color:#1e5c42"><b>Получихме те!</b> Благодарим, че се включваш — екипът ще ти пише съвсем скоро.</div>
         <input type="hidden" name="_subject" value="Ново включване — Младежки Фронт">
-        <input type="hidden" name="_next" value="https://leshnikotroshachkata1913.github.io/mladezhki-front/#join">
+        <input type="hidden" name="_next" value="https://leshnikotroshachkata1913.github.io/mladezhki-front/?sent=1#join">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_language" value="bg">
         <label for="f-name">Име</label>
         <input id="f-name" type="text" name="име" required placeholder="Твоето име">
@@ -520,6 +546,48 @@
     <span style="font-size:13px">© 2026 Младежки Фронт · за дигитална България</span>
   </div>
 </footer>
+
+<script>
+(function(){
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mmenu');
+  burger.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  var links = document.querySelectorAll('.nav-links a[data-spy]');
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting && map[e.target.id]) {
+        links.forEach(function(a){ a.classList.remove('active'); });
+        map[e.target.id].classList.add('active');
+      }
+    });
+  }, {rootMargin:'-30% 0px -60% 0px'});
+  ['about','data','models','event'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+
+  if (new URLSearchParams(location.search).has('sent')) {
+    var ok = document.getElementById('jok');
+    if (ok) {
+      ok.hidden = false;
+      history.replaceState(null,'',location.pathname + '#join');
+      document.getElementById('join').scrollIntoView();
+    }
+  }
+})();
+</script>
 
 </body>
 </html>
