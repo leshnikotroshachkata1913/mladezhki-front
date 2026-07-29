@@ -565,9 +565,7 @@
 
   var links = document.querySelectorAll('.nav-links a[data-spy]');
   var spyIds = ['about','data','models','event'];
-  var ticking = false;
   function updateSpy(){
-    ticking = false;
     var current = null;
     for (var i = 0; i < spyIds.length; i++) {
       var el = document.getElementById(spyIds[i]);
@@ -577,9 +575,7 @@
       a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
   }
-  window.addEventListener('scroll', function(){
-    if (!ticking) { ticking = true; requestAnimationFrame(updateSpy); }
-  }, {passive:true});
+  window.addEventListener('scroll', updateSpy, {passive:true});
   updateSpy();
 
   if (new URLSearchParams(location.search).has('sent')) {
