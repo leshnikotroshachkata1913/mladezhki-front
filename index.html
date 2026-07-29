@@ -3,186 +3,520 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Младежки Фронт — лого варианти</title>
+<title>Младежки Фронт — за дигитална България</title>
+<meta name="description" content="Младежки Фронт е независима гражданска инициатива за цялостно изследване и подобряване на дигиталното управление в България.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap&subset=cyrillic" rel="stylesheet">
-</head>
-<body>
 <style>
   :root{
-    --bg:#f4f3ee; --tx:#101018; --tx-2:#5a5a56; --line:#e0dfd8; --card:#ffffff;
-    --ink:#101018; --green:#00966E; --green-b:#00A876; --red:#D62612; --red-b:#E63219;
+    --ink:#101018; --ink-2:#1a1a24; --paper:#f6f5f1; --white:#ffffff;
+    --green:#00966E; --green-bright:#00A876; --red:#D62612; --red-bright:#E63219;
+    --blue:#5468c4;
+    --muted:#7a7a84; --muted-light:#8a8a84; --line:#e3e2dc;
   }
-  @media (prefers-color-scheme: dark){
-    :root{--bg:#0c0c12; --tx:#f2f2f0; --tx-2:#9a9aa2; --line:#26262e; --card:#15151d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;color:var(--ink);background:var(--paper)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+
+  header{background:var(--ink);position:sticky;top:0;z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+  .logo-word{color:#fff;font-size:20px;font-weight:400;letter-spacing:-0.01em}
+  .logo-word b{font-weight:800}
+  .nav-links{display:flex;align-items:center;gap:32px}
+  .nav-links a{color:#b9b9c2;text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.04em}
+  .nav-links a:hover{color:#fff}
+  .btn{display:inline-block;padding:13px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;letter-spacing:0.02em;border:none;cursor:pointer;font-family:inherit}
+  .btn-red{background:var(--red-bright);color:#fff}
+  .btn-red:hover{background:#c92310}
+  .btn-ghost{border:1px solid #3a3a46;color:#fff}
+  .btn-ghost:hover{border-color:#fff}
+  .nav .btn{padding:10px 22px;font-size:14px}
+
+  .hero{background:var(--ink);color:#fff;padding:96px 0 110px;position:relative;overflow:hidden}
+  .hero h1{font-size:62px;line-height:1.06;font-weight:900;letter-spacing:-0.03em;max-width:720px}
+  .hero h1 .g{color:var(--green-bright)}
+  .hero h1 .r{color:var(--red-bright)}
+  .hero p{margin:28px 0 40px;font-size:19px;line-height:1.65;color:#a8a8b2;max-width:580px}
+  .hero-cta{display:flex;gap:16px}
+  .hero-pixels{position:absolute;right:-40px;top:50%;transform:translateY(-50%);opacity:0.95}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.22em;color:var(--muted);margin-bottom:26px}
+  .eyebrow .px{width:9px;height:9px;border-radius:2px;background:var(--red-bright)}
+
+  .stats{background:var(--ink-2);border-top:1px solid #23232e;color:#fff;padding:38px 0}
+  .stats .wrap{display:flex;justify-content:space-between;gap:24px}
+  .stat{display:flex;align-items:baseline;gap:12px}
+  .stat b{font-size:32px;font-weight:900;letter-spacing:-0.02em;white-space:nowrap}
+  .stat span{font-size:13.5px;color:#8f8f9a;max-width:190px;line-height:1.45}
+  .stat b.g{color:var(--green-bright)} .stat b.r{color:var(--red-bright)}
+
+  section{padding:96px 0}
+  .kicker{font-size:13px;font-weight:600;letter-spacing:0.22em;color:var(--muted-light);margin-bottom:14px}
+  h2{font-size:40px;font-weight:900;letter-spacing:-0.02em;margin-bottom:14px}
+  .lead{font-size:17px;line-height:1.7;color:#5a5a56;max-width:640px}
+  h3{font-size:19px;font-weight:800;letter-spacing:-0.01em}
+
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 24px}
+  .card .num{font-size:14px;font-weight:800;color:var(--red);letter-spacing:0.1em;margin-bottom:14px}
+  .card h3{font-size:17px;margin-bottom:10px}
+  .card p{font-size:14px;line-height:1.6;color:#6b6b66}
+
+  .indep{margin-top:36px;background:#eef4f1;border:1px solid #d5e5dd;border-radius:14px;padding:26px 30px;display:flex;gap:18px;align-items:flex-start}
+  .indep .dot{flex:none;width:10px;height:10px;border-radius:3px;background:var(--green);margin-top:7px}
+  .indep p{font-size:15px;line-height:1.65;color:#3f4a44}
+  .indep b{color:var(--ink)}
+
+  .mod{margin-top:64px}
+  .mod-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+  .mod-head .src{font-size:13px;color:var(--muted-light)}
+  .phases{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .phase{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 18px}
+  .phase b{display:block;font-size:13px;font-weight:800;color:var(--green);letter-spacing:0.06em;margin-bottom:10px}
+  .phase h4{font-size:14.5px;font-weight:700;line-height:1.35;margin-bottom:8px}
+  .phase p{font-size:13px;line-height:1.5;color:#6b6b66}
+  .deliv{margin-top:26px;font-size:14.5px;line-height:1.7;color:#5a5a56;max-width:760px}
+  .deliv b{color:var(--ink)}
+
+  .data{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px}
+  .tile{background:var(--ink);color:#fff;border-radius:14px;padding:26px 24px}
+  .tile b{display:block;font-size:38px;font-weight:900;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+  .tile b.r{color:var(--red-bright)} .tile b.g{color:var(--green-bright)}
+  .tile span{display:block;margin-top:10px;font-size:13.5px;line-height:1.5;color:#9a9aa4}
+
+  .chart{margin-top:64px}
+  .chart h3{margin-bottom:6px}
+  .chart .sub{font-size:14px;color:var(--muted-light);margin-bottom:22px}
+  .legend{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:18px}
+  .legend span{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#5a5a56;font-weight:500}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .brow{display:flex;align-items:center;gap:14px;padding:7px 0}
+  .brow .lbl{flex:none;width:150px;text-align:right;font-size:14px;font-weight:500;color:#3a3a36}
+  .brow .track{flex:1;height:20px;background:#f0efe9;border-radius:4px;position:relative}
+  .brow .fill{height:100%;border-radius:0 4px 4px 0;min-width:2px;position:relative;transition:opacity .12s}
+  .brow:hover .fill{opacity:0.85}
+  .brow .val{position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);font-size:13.5px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .axis-note{margin-top:14px;font-size:12.5px;color:var(--muted-light)}
+
+  .cmp{margin-top:64px}
+  .cmp .tblwrap{overflow-x:auto;margin-top:22px;border:1px solid var(--line);border-radius:14px}
+  table{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+  th,td{padding:14px 20px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line)}
+  tr:last-child td{border-bottom:none}
+  th{font-size:12.5px;letter-spacing:0.1em;font-weight:700;color:var(--muted-light);background:#fafaf7}
+  td.bg{font-weight:800;color:var(--red);font-variant-numeric:tabular-nums}
+  td.ee{font-weight:800;color:var(--green);font-variant-numeric:tabular-nums}
+  td.m{color:#3a3a36}
+  .verdict{margin-top:26px;background:#fdf1ef;border:1px solid #f3d5d0;border-radius:14px;padding:24px 28px;font-size:15px;line-height:1.7;color:#4a3f3d;max-width:860px}
+  .verdict b{color:var(--ink)}
+
+  .models{background:var(--ink);color:#fff}
+  .models .lead{color:#a8a8b2}
+  .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:52px}
+  .mcard{background:var(--ink-2);border:1px solid #26262e;border-radius:16px;padding:30px 28px}
+  .mcard .flag{font-size:13px;font-weight:700;letter-spacing:0.18em;color:var(--green-bright);margin-bottom:8px}
+  .mcard h3{color:#fff;font-size:21px;margin-bottom:12px}
+  .mcard .story{font-size:14.5px;line-height:1.7;color:#a8a8b2}
+  .mfacts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+  .mfact{background:#101018;border:1px solid #26262e;border-radius:10px;padding:12px 14px}
+  .mfact b{display:block;font-size:17px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+  .mfact span{font-size:12px;color:#8f8f9a;line-height:1.4;display:block;margin-top:3px}
+  .mtake{border-top:1px solid #26262e;padding-top:16px;margin-top:4px}
+  .mtake b{font-size:12.5px;letter-spacing:0.14em;color:var(--red-bright);display:block;margin-bottom:10px}
+  .mtake li{font-size:13.5px;line-height:1.6;color:#c9c9d2;margin-left:18px;margin-bottom:6px}
+
+  .event .prog{margin-top:48px;max-width:720px}
+  .slot{display:flex;gap:22px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .slot:last-child{border-bottom:none}
+  .slot .t{flex:none;width:70px;font-weight:800;font-size:15px;color:var(--green);font-variant-numeric:tabular-nums}
+  .slot h4{font-size:15.5px;font-weight:700;margin-bottom:4px}
+  .slot p{font-size:14px;color:#6b6b66;line-height:1.55}
+  .event-cta{margin-top:36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .btn-soon{background:#e8e7e1;color:#8a8a84;cursor:default}
+  .event-note{font-size:13.5px;color:var(--muted-light)}
+
+  .join{background:var(--red);color:#fff}
+  .join h2{color:#fff}
+  .join .lead{color:#ffd6d0}
+  .jgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:20px;align-items:start}
+  .jwhy li{margin:0 0 14px 20px;font-size:15px;line-height:1.6;color:#ffe3df}
+  .jwhy li::marker{color:#fff}
+  .jform{background:#fff;border-radius:16px;padding:34px 32px;color:var(--ink)}
+  .jform label{display:block;font-size:13px;font-weight:700;letter-spacing:0.04em;margin:18px 0 7px;color:#3a3a36}
+  .jform label:first-child{margin-top:0}
+  .jform input,.jform select,.jform textarea{width:100%;padding:13px 15px;border:1px solid #d8d7d0;border-radius:8px;font-size:15px;font-family:inherit;background:#fafaf7;color:var(--ink)}
+  .jform input:focus,.jform select:focus,.jform textarea:focus{outline:2px solid var(--red);border-color:var(--red)}
+  .jform .btn{width:100%;margin-top:24px;text-align:center}
+  .btn-ink{background:var(--ink);color:#fff}
+  .btn-ink:hover{background:#000}
+  .jnote{margin-top:14px;font-size:12.5px;color:#8a8a84;text-align:center}
+
+  footer{background:var(--ink);color:#7a7a84;padding:52px 0}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+  footer .logo-word{font-size:16px}
+  footer nav{display:flex;gap:26px;flex-wrap:wrap}
+  footer a{color:#7a7a84;text-decoration:none;font-size:13px}
+  footer a:hover{color:#fff}
+
+  @media (max-width:900px){
+    .hero h1{font-size:44px}.hero-pixels{display:none}
+    .cards,.tiles{grid-template-columns:1fr 1fr}
+    .phases{grid-template-columns:1fr 1fr}
+    .mgrid,.jgrid{grid-template-columns:1fr}
+    .stats .wrap{flex-wrap:wrap}
+    .nav-links a:not(.btn){display:none}
   }
-  :root[data-theme="dark"]{--bg:#0c0c12; --tx:#f2f2f0; --tx-2:#9a9aa2; --line:#26262e; --card:#15151d}
-  :root[data-theme="light"]{--bg:#f4f3ee; --tx:#101018; --tx-2:#5a5a56; --line:#e0dfd8; --card:#ffffff}
-  body{background:var(--bg);margin:0}
-  .bb{font-family:'Inter',-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--tx);max-width:920px;margin:0 auto;padding:56px 24px 80px}
-  .bb *{margin:0;padding:0;box-sizing:border-box}
-  .bb .eyebrow{font-size:12px;font-weight:600;letter-spacing:0.24em;color:var(--tx-2);display:flex;align-items:center;gap:10px;margin-bottom:18px}
-  .bb .eyebrow i{width:9px;height:9px;border-radius:2px;background:var(--red-b)}
-  .bb h1{font-size:clamp(30px,5vw,44px);font-weight:900;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance}
-  .bb .intro{margin:18px 0 0;font-size:16px;line-height:1.7;color:var(--tx-2);max-width:62ch}
-  .bb section{margin-top:56px}
-  .bb .cap{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
-  .bb h2{font-size:19px;font-weight:800;letter-spacing:-0.01em}
-  .bb .use{font-size:13px;color:var(--tx-2)}
-  .swatch{border-radius:16px;padding:clamp(24px,5vw,48px);border:1px solid var(--line);overflow:hidden}
-  .swatch svg{display:block;width:100%;height:auto}
-  .sw-dark{background:#101018}
-  .sw-light{background:#f6f5f1;border-color:#ddd}
-  .row{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:center}
-  .row svg{width:auto}
-  .pal{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
-  .chip{border-radius:14px;border:1px solid var(--line);overflow:hidden;background:var(--card)}
-  .chip .c{height:74px}
-  .chip .m{padding:12px 14px}
-  .chip .m b{display:block;font-size:14px;font-weight:800}
-  .chip .m span{font-size:12.5px;color:var(--tx-2);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  .rules{display:grid;gap:0;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
-  .rule{display:flex;gap:14px;padding:18px 22px;font-size:15px;line-height:1.6}
-  .rule + .rule{border-top:1px solid var(--line)}
-  .rule i{flex:none;width:9px;height:9px;border-radius:2px;margin-top:7px}
-  .rule.ok i{background:var(--green-b)}
-  .rule.no i{background:var(--red-b)}
-  .rule span{color:var(--tx-2)}
-  .rule b{font-weight:800;color:var(--tx)}
-  .cta{margin-top:64px;background:#101018;border-radius:18px;padding:clamp(28px,5vw,44px);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-  .cta h2{color:#fff;font-size:22px}
-  .cta p{color:#9a9aa2;font-size:14.5px;margin-top:8px;line-height:1.6;max-width:46ch}
-  .cta a{flex:none;background:var(--red-b);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:9px}
-  .cta a:hover{background:#c92310}
-  .cta a:focus-visible,.bb a:focus-visible{outline:2px solid var(--red-b);outline-offset:3px}
+  @media (max-width:600px){
+    .wrap{padding:0 20px}
+    .nav{height:60px}
+    .logo{gap:10px}
+    .logo svg{width:44px;height:20px}
+    .logo-word{font-size:16px;white-space:nowrap}
+    .nav .btn{padding:9px 16px;font-size:13px;white-space:nowrap}
+    .hero{padding:52px 0 60px}
+    .eyebrow{margin-bottom:20px;letter-spacing:0.14em;font-size:12px}
+    .hero h1{font-size:30px;letter-spacing:-0.02em}
+    .hero p{font-size:16px;margin:20px 0 28px}
+    .hero-cta{flex-direction:column;gap:12px}
+    .hero-cta .btn{text-align:center;white-space:nowrap}
+    .stats{padding:26px 0}
+    .stats .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .stat b{font-size:26px}
+    section{padding:60px 0}
+    h2{font-size:28px}
+    .cards,.tiles,.phases{grid-template-columns:1fr;gap:14px;margin-top:32px}
+    .phases{gap:12px}
+    .brow .lbl{width:96px;font-size:12.5px}
+    .brow .val{font-size:12px}
+    .mfacts{grid-template-columns:1fr 1fr}
+    .jform{padding:26px 20px}
+    footer .wrap{flex-direction:column;text-align:center}
+  }
 </style>
+</head>
+<body>
 
-<div class="bb">
-  <div class="eyebrow"><i></i>БРАНД БОРД · ЮЛИ 2026</div>
-  <h1>младежки <b style="font-weight:900">фронт</b> — лого система</h1>
-  <p class="intro">Идентичност за младежко движение за дигитална държава. Знакът е българският трибагреник, изграден от пиксели, които се „разпадат" напред — нацията, която се дигитализира. Езикът следва най-добрите e-gov брандове (e-Estonia, island.is, GOV.UK): чист wordmark с малки букви + един дребен дигитален знак.</p>
+<svg width="0" height="0" style="position:absolute"><defs>
+<g id="pxflag">
+  <g fill="#ffffff"><rect x="0" y="0" width="12" height="12" rx="3"/><rect x="16" y="0" width="12" height="12" rx="3"/><rect x="32" y="0" width="12" height="12" rx="3"/><rect x="48" y="0" width="12" height="12" rx="3"/><rect x="66" y="2" width="8" height="8" rx="2"/><rect x="80" y="4" width="5" height="5" rx="1.5"/></g>
+  <g fill="#00A876"><rect x="0" y="16" width="12" height="12" rx="3"/><rect x="16" y="16" width="12" height="12" rx="3"/><rect x="32" y="16" width="12" height="12" rx="3"/><rect x="48" y="16" width="12" height="12" rx="3"/><rect x="64" y="16" width="12" height="12" rx="3"/><rect x="82" y="18" width="7" height="7" rx="2"/><rect x="95" y="20" width="4" height="4" rx="1"/></g>
+  <g fill="#E63219"><rect x="0" y="32" width="12" height="12" rx="3"/><rect x="16" y="32" width="12" height="12" rx="3"/><rect x="32" y="32" width="12" height="12" rx="3"/><rect x="50" y="34" width="8" height="8" rx="2"/><rect x="64" y="36" width="5" height="5" rx="1.5"/></g>
+</g>
+</defs></svg>
 
-  <section>
-    <div class="cap"><h2>Основно лого · тъмен фон</h2><span class="use">сайт, презентации, видео</span></div>
-    <div class="swatch sw-dark">
-      <svg viewBox="0 0 660 180" role="img" aria-label="Основно лого на тъмен фон">
-        <g transform="translate(40,52) scale(1.5)">
-          <g fill="#ffffff"><rect x="0" y="0" width="12" height="12" rx="3"/><rect x="16" y="0" width="12" height="12" rx="3"/><rect x="32" y="0" width="12" height="12" rx="3"/><rect x="48" y="0" width="12" height="12" rx="3"/><rect x="66" y="2" width="8" height="8" rx="2"/><rect x="80" y="4" width="5" height="5" rx="1.5"/></g>
-          <g fill="#00A876"><rect x="0" y="16" width="12" height="12" rx="3"/><rect x="16" y="16" width="12" height="12" rx="3"/><rect x="32" y="16" width="12" height="12" rx="3"/><rect x="48" y="16" width="12" height="12" rx="3"/><rect x="64" y="16" width="12" height="12" rx="3"/><rect x="82" y="18" width="7" height="7" rx="2"/><rect x="95" y="20" width="4" height="4" rx="1"/></g>
-          <g fill="#E63219"><rect x="0" y="32" width="12" height="12" rx="3"/><rect x="16" y="32" width="12" height="12" rx="3"/><rect x="32" y="32" width="12" height="12" rx="3"/><rect x="50" y="34" width="8" height="8" rx="2"/><rect x="64" y="36" width="5" height="5" rx="1.5"/></g>
-        </g>
-        <text x="224" y="105" font-family="'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="46" fill="#ffffff">младежки <tspan font-weight="800">фронт<tspan fill="#E63219">.</tspan></tspan></text>
-        <text x="227" y="140" font-family="'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="15" letter-spacing="6" fill="#7a7a84">ЗА ДИГИТАЛНА БЪЛГАРИЯ</text>
-      </svg>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg width="60" height="27" viewBox="0 0 100 45"><use href="#pxflag"/></svg>
+      <span class="logo-word">младежки <b>фронт</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">Инициативата</a>
+      <a href="#data">Данните</a>
+      <a href="#models">Моделите</a>
+      <a href="#event">Събитието</a>
+      <a class="btn btn-red" href="#join">Включи се</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <svg class="hero-pixels" width="420" height="420" viewBox="0 0 420 420" aria-hidden="true">
+    <g opacity="0.14" fill="#ffffff"><rect x="40" y="40" width="34" height="34" rx="8"/><rect x="86" y="40" width="34" height="34" rx="8"/><rect x="132" y="40" width="34" height="34" rx="8"/><rect x="178" y="46" width="22" height="22" rx="6"/></g>
+    <g opacity="0.55" fill="#00A876"><rect x="40" y="86" width="34" height="34" rx="8"/><rect x="86" y="86" width="34" height="34" rx="8"/><rect x="132" y="86" width="34" height="34" rx="8"/><rect x="178" y="86" width="34" height="34" rx="8"/><rect x="228" y="92" width="22" height="22" rx="6"/><rect x="266" y="96" width="13" height="13" rx="4"/></g>
+    <g opacity="0.55" fill="#E63219"><rect x="40" y="132" width="34" height="34" rx="8"/><rect x="86" y="132" width="34" height="34" rx="8"/><rect x="138" y="138" width="22" height="22" rx="6"/><rect x="176" y="142" width="13" height="13" rx="4"/></g>
+    <g opacity="0.10" fill="#ffffff"><rect x="300" y="200" width="13" height="13" rx="4"/><rect x="340" y="160" width="9" height="9" rx="3"/><rect x="250" y="250" width="9" height="9" rx="3"/><rect x="320" y="300" width="13" height="13" rx="4"/></g>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow"><i class="px"></i>НЕЗАВИСИМА ГРАЖДАНСКА ИНИЦИАТИВА</span>
+    <h1>Естония го направи.<br>Дания го направи.<br><span class="g">Ред е</span> на <span class="r">България.</span></h1>
+    <p>Младежки Фронт за дигитална България изследва защо електронното управление у нас не работи за хората — и предлага конкретни, приложими решения, проверени в най-дигиталните държави в света.</p>
+    <div class="hero-cta">
+      <a class="btn btn-red" href="#join">Включи се в инициативата</a>
+      <a class="btn btn-ghost" href="#data">Виж данните</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="cap"><h2>Основно лого · светъл фон</h2><span class="use">документи, печат, имейл</span></div>
-    <div class="swatch sw-light">
-      <svg viewBox="0 0 660 180" role="img" aria-label="Основно лого на светъл фон">
-        <g transform="translate(40,52) scale(1.5)">
-          <g fill="#ffffff" stroke="#c9c9c2" stroke-width="0.8"><rect x="0" y="0" width="12" height="12" rx="3"/><rect x="16" y="0" width="12" height="12" rx="3"/><rect x="32" y="0" width="12" height="12" rx="3"/><rect x="48" y="0" width="12" height="12" rx="3"/><rect x="66" y="2" width="8" height="8" rx="2"/><rect x="80" y="4" width="5" height="5" rx="1.5"/></g>
-          <g fill="#00966E"><rect x="0" y="16" width="12" height="12" rx="3"/><rect x="16" y="16" width="12" height="12" rx="3"/><rect x="32" y="16" width="12" height="12" rx="3"/><rect x="48" y="16" width="12" height="12" rx="3"/><rect x="64" y="16" width="12" height="12" rx="3"/><rect x="82" y="18" width="7" height="7" rx="2"/><rect x="95" y="20" width="4" height="4" rx="1"/></g>
-          <g fill="#D62612"><rect x="0" y="32" width="12" height="12" rx="3"/><rect x="16" y="32" width="12" height="12" rx="3"/><rect x="32" y="32" width="12" height="12" rx="3"/><rect x="50" y="34" width="8" height="8" rx="2"/><rect x="64" y="36" width="5" height="5" rx="1.5"/></g>
-        </g>
-        <text x="224" y="105" font-family="'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="46" fill="#101018">младежки <tspan font-weight="800">фронт<tspan fill="#D62612">.</tspan></tspan></text>
-        <text x="227" y="140" font-family="'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="15" letter-spacing="6" fill="#8a8a84">ЗА ДИГИТАЛНА БЪЛГАРИЯ</text>
-      </svg>
-    </div>
-  </section>
-
-  <section>
-    <div class="cap"><h2>Вариант „play"</h2><span class="use">кампании, видео интра, мърч</span></div>
-    <div class="swatch sw-light">
-      <svg viewBox="0 0 640 170" role="img" aria-label="Вариант play — знамето като бутон за старт">
-        <defs><clipPath id="playb"><path d="M0,0 L86,48 L0,96 Z"/></clipPath></defs>
-        <g transform="translate(48,36)">
-          <g clip-path="url(#playb)">
-            <rect x="0" y="0" width="90" height="32" fill="#ffffff"/>
-            <rect x="0" y="32" width="90" height="32" fill="#00966E"/>
-            <rect x="0" y="64" width="90" height="32" fill="#D62612"/>
-          </g>
-          <path d="M0,0 L86,48 L0,96 Z" fill="none" stroke="#c9c9c2" stroke-width="1"/>
-        </g>
-        <text x="204" y="98" font-family="'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="46" fill="#101018">младежки <tspan font-weight="800">фронт<tspan fill="#D62612">.</tspan></tspan></text>
-        <text x="207" y="133" font-family="'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="15" letter-spacing="6" fill="#8a8a84">СТАРТИРАЙ ПРОМЯНАТА</text>
-      </svg>
-    </div>
-  </section>
-
-  <section>
-    <div class="cap"><h2>Икона и аватар</h2><span class="use">профилни снимки, favicon, стикери</span></div>
-    <div class="swatch sw-light">
-      <div class="row">
-        <svg width="116" height="116" viewBox="0 0 116 116" role="img" aria-label="App икона">
-          <rect width="116" height="116" rx="26" fill="#101018"/>
-          <g transform="translate(26,34) scale(1.05)">
-            <g fill="#ffffff"><rect x="0" y="0" width="12" height="12" rx="3"/><rect x="16" y="0" width="12" height="12" rx="3"/><rect x="32" y="0" width="12" height="12" rx="3"/><rect x="48" y="0" width="12" height="12" rx="3"/><rect x="66" y="2" width="8" height="8" rx="2"/></g>
-            <g fill="#00A876"><rect x="0" y="16" width="12" height="12" rx="3"/><rect x="16" y="16" width="12" height="12" rx="3"/><rect x="32" y="16" width="12" height="12" rx="3"/><rect x="48" y="16" width="12" height="12" rx="3"/><rect x="64" y="16" width="12" height="12" rx="3"/></g>
-            <g fill="#E63219"><rect x="0" y="32" width="12" height="12" rx="3"/><rect x="16" y="32" width="12" height="12" rx="3"/><rect x="32" y="32" width="12" height="12" rx="3"/><rect x="50" y="34" width="8" height="8" rx="2"/></g>
-          </g>
-        </svg>
-        <svg width="116" height="116" viewBox="0 0 120 120" role="img" aria-label="Кръгъл аватар">
-          <defs><clipPath id="playa"><path d="M0,0 L52,29 L0,58 Z"/></clipPath></defs>
-          <circle cx="60" cy="60" r="60" fill="#101018"/>
-          <g transform="translate(42,31)" clip-path="url(#playa)">
-            <rect x="0" y="0" width="56" height="20" fill="#ffffff"/>
-            <rect x="0" y="20" width="56" height="19" fill="#00A876"/>
-            <rect x="0" y="39" width="56" height="19" fill="#E63219"/>
-          </g>
-        </svg>
-        <svg width="56" height="56" viewBox="0 0 116 116" role="img" aria-label="Икона 56 пиксела">
-          <rect width="116" height="116" rx="26" fill="#101018"/>
-          <g transform="translate(26,34) scale(1.05)">
-            <g fill="#ffffff"><rect x="0" y="0" width="12" height="12" rx="3"/><rect x="16" y="0" width="12" height="12" rx="3"/><rect x="32" y="0" width="12" height="12" rx="3"/><rect x="48" y="0" width="12" height="12" rx="3"/><rect x="66" y="2" width="8" height="8" rx="2"/></g>
-            <g fill="#00A876"><rect x="0" y="16" width="12" height="12" rx="3"/><rect x="16" y="16" width="12" height="12" rx="3"/><rect x="32" y="16" width="12" height="12" rx="3"/><rect x="48" y="16" width="12" height="12" rx="3"/><rect x="64" y="16" width="12" height="12" rx="3"/></g>
-            <g fill="#E63219"><rect x="0" y="32" width="12" height="12" rx="3"/><rect x="16" y="32" width="12" height="12" rx="3"/><rect x="32" y="32" width="12" height="12" rx="3"/><rect x="50" y="34" width="8" height="8" rx="2"/></g>
-          </g>
-        </svg>
-        <svg width="28" height="28" viewBox="0 0 116 116" role="img" aria-label="Favicon 28 пиксела">
-          <rect width="116" height="116" rx="26" fill="#101018"/>
-          <g transform="translate(26,34) scale(1.05)">
-            <g fill="#ffffff"><rect x="0" y="0" width="12" height="12" rx="3"/><rect x="16" y="0" width="12" height="12" rx="3"/><rect x="32" y="0" width="12" height="12" rx="3"/><rect x="48" y="0" width="12" height="12" rx="3"/><rect x="66" y="2" width="8" height="8" rx="2"/></g>
-            <g fill="#00A876"><rect x="0" y="16" width="12" height="12" rx="3"/><rect x="16" y="16" width="12" height="12" rx="3"/><rect x="32" y="16" width="12" height="12" rx="3"/><rect x="48" y="16" width="12" height="12" rx="3"/><rect x="64" y="16" width="12" height="12" rx="3"/></g>
-            <g fill="#E63219"><rect x="0" y="32" width="12" height="12" rx="3"/><rect x="16" y="32" width="12" height="12" rx="3"/><rect x="32" y="32" width="12" height="12" rx="3"/><rect x="50" y="34" width="8" height="8" rx="2"/></g>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="cap"><h2>Палитра</h2><span class="use">знамето + мастило</span></div>
-    <div class="pal">
-      <div class="chip"><div class="c" style="background:#101018"></div><div class="m"><b>Мастило</b><span>#101018</span></div></div>
-      <div class="chip"><div class="c" style="background:#ffffff;border-bottom:1px solid var(--line)"></div><div class="m"><b>Бяло</b><span>#FFFFFF</span></div></div>
-      <div class="chip"><div class="c" style="background:#00966E"></div><div class="m"><b>Зелено</b><span>#00966E</span></div></div>
-      <div class="chip"><div class="c" style="background:#D62612"></div><div class="m"><b>Червено</b><span>#D62612</span></div></div>
-      <div class="chip"><div class="c" style="background:#00A876"></div><div class="m"><b>Зелено · тъмен фон</b><span>#00A876</span></div></div>
-      <div class="chip"><div class="c" style="background:#E63219"></div><div class="m"><b>Червено · тъмен фон</b><span>#E63219</span></div></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="cap"><h2>Правила</h2></div>
-    <div class="rules">
-      <div class="rule ok"><i></i><div><b>Лентите винаги хоризонтално:</b> <span>бяло отгоре, зелено в средата, червено отдолу — редът на трибагреника.</span></div></div>
-      <div class="rule ok"><i></i><div><b>Wordmark-ът е с малки букви:</b> <span>„младежки" в нормално, „фронт" в черно (bold) тегло.</span></div></div>
-      <div class="rule ok"><i></i><div><b>Пикселите се „разпадат" надясно:</b> <span>посоката на движение е винаги напред.</span></div></div>
-      <div class="rule no"><i></i><div><b>Без вертикални ленти:</b> <span>подредени една до друга цветовете четат като мексиканското/италианското знаме.</span></div></div>
-      <div class="rule no"><i></i><div><b>Без разтягане и завъртане:</b> <span>знакът се мащабира само пропорционално.</span></div></div>
-    </div>
-  </section>
-
-  <div class="cta">
-    <div>
-      <h2>Виж логото в действие</h2>
-      <p>Пълен mockup на сайта с новата идентичност — отваря се на компютър и телефон.</p>
-    </div>
-    <a href="mockup/">Отвори сайт mockup-а</a>
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b class="r">1 млрд.+ €</b><span>похарчени за е-управление 2002–2016 г.</span></div>
+    <div class="stat"><b>32%</b><span>от българите са ползвали е-услуги през 2024 г.</span></div>
+    <div class="stat"><b class="r">26-о</b><span>място от 27 в ЕС по реално използване</span></div>
+    <div class="stat"><b class="g">70%</b><span>е средното за ЕС — двойно повече от нас</span></div>
   </div>
 </div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="kicker">ИНИЦИАТИВАТА</div>
+    <h2>Какво е Младежки Фронт</h2>
+    <p class="lead">Независима аналитично-приложна инициатива за цялостно изследване и подобряване на дигиталното управление в България. Гледаме на дигиталната държава не като на съвкупност от електронни услуги, а като на ново, прозрачно взаимоотношение между държавата и обществото.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="num">ЦЕЛ 01</div>
+        <h3>Цялостна визия</h3>
+        <p>Анализ на текущото състояние — нормативна рамка, институции, реално използване — и стратегическа визия за развитие.</p>
+      </div>
+      <div class="card">
+        <div class="num">ЦЕЛ 02</div>
+        <h3>Чуждият опит</h3>
+        <p>Изследване на успешните модели в силно дигитализирани държави и кое от тях може да проработи в български контекст.</p>
+      </div>
+      <div class="card">
+        <div class="num">ЦЕЛ 03</div>
+        <h3>Гражданска ангажираност</h3>
+        <p>Кампании и предложения, които повишават доверието и реалното използване на е-услуги от граждани и бизнес.</p>
+      </div>
+      <div class="card">
+        <div class="num">ЦЕЛ 04</div>
+        <h3>По-лека администрация</h3>
+        <p>Идентифициране на дублиращи се процедури и предложения за по-малко административна тежест.</p>
+      </div>
+    </div>
+    <div class="indep">
+      <i class="dot"></i>
+      <p><b>Напълно независима.</b> Инициативата не е обвързана с политически партии и държавни институции. Екипът работи автономно, а финансирането се търси от европейски програми, международни фондации и дарители без участие в управлението — гаранция за обективни анализи и препоръки.</p>
+    </div>
+
+    <div class="mod">
+      <div class="mod-head">
+        <h3>Как работим: модулни проекти</h3>
+        <span class="src">В момента: Модул 3 — технологични платформи и иновации</span>
+      </div>
+      <p class="lead" style="margin-bottom:26px">Изследването върви на модули, всеки със собствени измерими резултати. Модул 3 анализира технологичната реализация на е-управлението — технологиите като инфраструктура за услуги, а не като самоцел. Пет фази по четири седмици:</p>
+      <div class="phases">
+        <div class="phase"><b>ФАЗА 1</b><h4>Подготовка и обхват</h4><p>Критерии за оценка и методологична рамка.</p></div>
+        <div class="phase"><b>ФАЗА 2</b><h4>Картиране на системите</h4><p>Анализ на eGov.bg, регистри и обменни механизми.</p></div>
+        <div class="phase"><b>ФАЗА 3</b><h4>Ефективност и проблеми</h4><p>Използваемост, надеждност, интероперативност, сигурност.</p></div>
+        <div class="phase"><b>ФАЗА 4</b><h4>Иновации и практики</h4><p>AI, автоматизация, блокчейн + международно сравнение.</p></div>
+        <div class="phase"><b>ФАЗА 5</b><h4>Синтез и препоръки</h4><p>Финален доклад с реалистични технологични насоки.</p></div>
+      </div>
+      <p class="deliv"><b>Какво ще излезе от модула:</b> карта на технологичните платформи и системи · оценка на ефективността и интероперативността · анализ на технологичните дефицити · сравнителен международен анализ · реалистични препоръки за развитие.</p>
+    </div>
+  </div>
+</section>
+
+<section class="data" id="data">
+  <div class="wrap">
+    <div class="kicker">ДАННИТЕ</div>
+    <h2>Какво казват числата</h2>
+    <p class="lead">Милиард евро по-късно държавата ни е онлайн на хартия, но не и в живота на хората. Ето официалната статистика, без разкрасяване.</p>
+
+    <div class="tiles">
+      <div class="tile"><b class="r">1 млрд.+ €</b><span>похарчени за дигитално управление 2002–2016 г. (БИА)</span></div>
+      <div class="tile"><b>35,9%</b><span>от българите взаимодействат онлайн с администрацията (НСИ, 2025)</span></div>
+      <div class="tile"><b class="r">8,7%</b><span>при хората с основно образование — дигиталното неравенство е огромно (НСИ, 2025)</span></div>
+      <div class="tile"><b class="g">×2</b><span>ръст е нужен само за да стигнем средното за ЕС</span></div>
+    </div>
+
+    <div class="chart">
+      <h3>Колко граждани ползват сайт или приложение на държавата</h3>
+      <div class="sub">% от хората на 16–74 г., последните 12 месеца · Евростат, 2024</div>
+      <div class="legend">
+        <span><i style="background:#00966E"></i>Държави-модели</span>
+        <span><i style="background:#5468c4"></i>ЕС и съседи</span>
+        <span><i style="background:#D62612"></i>България</span>
+      </div>
+      <div class="brow"><span class="lbl">Дания</span><div class="track"><div class="fill" style="width:98%;background:#00966E"><span class="val">98%</span></div></div></div>
+      <div class="brow"><span class="lbl">Финландия</span><div class="track"><div class="fill" style="width:96%;background:#00966E"><span class="val">96%</span></div></div></div>
+      <div class="brow"><span class="lbl">Естония</span><div class="track"><div class="fill" style="width:89%;background:#00966E"><span class="val">89%</span></div></div></div>
+      <div class="brow"><span class="lbl">Средно за ЕС</span><div class="track"><div class="fill" style="width:70%;background:#5468c4"><span class="val">70%</span></div></div></div>
+      <div class="brow"><span class="lbl">България</span><div class="track"><div class="fill" style="width:32%;background:#D62612"><span class="val">32%</span></div></div></div>
+      <div class="brow"><span class="lbl">Румъния</span><div class="track"><div class="fill" style="width:26%;background:#5468c4"><span class="val">26%</span></div></div></div>
+      <div class="axis-note">Исландия не участва в изследването на Евростат — тя не е членка на ЕС, но по данни на ООН (EGDI 2024) е в топ 5 в света.</div>
+    </div>
+
+    <div class="chart">
+      <h3>Дигиталното неравенство: кой остава извън системата</h3>
+      <div class="sub">% използващи интернет за взаимодействие с администрацията, по образование · НСИ, 2025</div>
+      <div class="brow"><span class="lbl">Висше</span><div class="track"><div class="fill" style="width:65.9%;background:#101018"><span class="val">65,9%</span></div></div></div>
+      <div class="brow"><span class="lbl">Средно</span><div class="track"><div class="fill" style="width:28.6%;background:#101018"><span class="val">28,6%</span></div></div></div>
+      <div class="brow"><span class="lbl">Основно и по-ниско</span><div class="track"><div class="fill" style="width:8.7%;background:#D62612"><span class="val">8,7%</span></div></div></div>
+      <div class="axis-note">По възраст: най-активни са 35–44 г. (49,8%). При 65–74 г. — едва 11,8%. Е-услугите не стигат до тези, на които биха спестили най-много.</div>
+    </div>
+
+    <div class="cmp">
+      <h3>България срещу Естония: цената на пропуснатите години</h3>
+      <div class="sub" style="font-size:14px;color:var(--muted-light);margin-top:6px">Сравнение до 2016 г. · източник: БИА</div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>ПОКАЗАТЕЛ</th><th>БЪЛГАРИЯ</th><th>ЕСТОНИЯ</th></tr></thead>
+          <tbody>
+            <tr><td class="m">Похарчено за е-управление</td><td class="bg">1 млрд. €</td><td class="ee">25 млн. €</td></tr>
+            <tr><td class="m">Място в ЕС по е-управление</td><td class="bg">25-о</td><td class="ee">1-во</td></tr>
+            <tr><td class="m">Администрации с е-услуги</td><td class="bg">19%</td><td class="ee">100%</td></tr>
+            <tr><td class="m">Граждани, взаимодействали онлайн</td><td class="bg">7%</td><td class="ee">70%</td></tr>
+            <tr><td class="m">Никога не са ползвали компютър</td><td class="bg">34%</td><td class="ee">8%</td></tr>
+            <tr><td class="m">Дни за стартиране на бизнес</td><td class="bg">23</td><td class="ee">1</td></tr>
+            <tr><td class="m">Часове за подготовка и плащане на данъци</td><td class="bg">453</td><td class="ee">50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="verdict"><b>Изводът:</b> проблемът не е в парите, а в подхода. С 40 пъти по-малко средства Естония постигна 10 пъти по-добри резултати — защото инвестира в просто устроени системи и в доверието на хората, а не само в инфраструктура и хардуер. Затова първите ни препоръки са: задължително електронно обслужване в администрацията и пренасочване на ресурси от хардуер към дигитална грамотност и информационни кампании.</div>
+    </div>
+  </div>
+</section>
+
+<section class="models" id="models">
+  <div class="wrap">
+    <div class="kicker" style="color:#6a6a74">ТЕХНИЧЕСКИЯТ АНАЛИЗ</div>
+    <h2>Четири държави, които го направиха</h2>
+    <p class="lead">Свалихме фокуса до четири модела с най-много уроци за България: Естония, Дания, Финландия и Исландия. Ето какво направиха те — разказано просто.</p>
+    <div class="mgrid" id="mgrid">
+      <div class="mcard">
+        <div class="flag">ЕСТОНИЯ</div>
+        <h3>Държавата, която се побира в телефона</h3>
+        <p class="story">Представи си, че подаваш данъчната си декларация за три минути от дивана. В Естония това е реалност още от 2000 г. След независимостта през 1991 г. страната е бедна, но залага на технологиите. През 1996 г. тръгва програмата „Тигров скок": компютри и интернет във всяко училище. През 2001 г. се появява X-Road — невидима „магистрала за данни", която свързва институциите, така че гражданинът подава информацията си само веднъж. През 2002 г. всеки получава електронна лична карта с дигитален подпис, а през 2005 г. Естония първа в света въвежда гласуване по интернет. Днес 99% от държавните услуги са онлайн — на гише се ходи почти само за сватба, развод или покупка на имот.</p>
+        <div class="mfacts">
+          <div class="mfact"><b>1996 г.</b><span>старт на „Тигров скок" — интернет във всяко училище</span></div>
+          <div class="mfact"><b>99%</b><span>от държавните услуги са достъпни онлайн</span></div>
+          <div class="mfact"><b>2% от БВП</b><span>годишна икономия от електронния подпис</span></div>
+          <div class="mfact"><b>2-ро място</b><span>в света по е-управление (ООН EGDI 2024)</span></div>
+        </div>
+        <div class="mtake">
+          <b>КАКВО ПРЕНАСЯМЕ</b>
+          <ul>
+            <li>Започваме от училището — устройства и дигитални умения във всяка класна стая.</li>
+            <li>Принципът „само веднъж" — свързани регистри, за да не носим едни и същи документи от гише на гише.</li>
+            <li>Постоянна инвестиция — около 1% от БВП за информационни технологии още от 1994 г., независимо кое правителство е на власт.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="flag">ДАНИЯ</div>
+        <h3>Как Дания прати гишето в историята</h3>
+        <p class="story">Историята започва през 2001 г., когато държавата, общините и регионите сядат на една маса и се договарят да строят заедно — общи стратегии и обща инфраструктура, вместо всеки сам за себе си. Така се раждат трите стълба: borger.dk — един-единствен сайт за всяка услуга; Digital Post — електронна пощенска кутия за всички официални писма; и MitID — лична дигитална самоличност за сигурно влизане навсякъде. Смелата стъпка идва през 2014 г.: дигиталната поща става задължителна и институциите спират хартиените писма по подразбиране — с изключение за хората, които не могат да я ползват. Днес данъци, здраве, пенсия и детски надбавки са на един екран, а ООН четири поредни пъти обявява Дания за №1 в света.</p>
+        <div class="mfacts">
+          <div class="mfact"><b>№1 в света</b><span>по е-управление (ООН) — 2018, 2020, 2022 и 2024 г.</span></div>
+          <div class="mfact"><b>2014 г.</b><span>дигиталната поща става задължителна</span></div>
+          <div class="mfact"><b>5,5 млн.</b><span>души ползват MitID</span></div>
+          <div class="mfact"><b>~89 млн.</b><span>влизания с MitID месечно (2024)</span></div>
+        </div>
+        <div class="mtake">
+          <b>КАКВО ПРЕНАСЯМЕ</b>
+          <ul>
+            <li>Една врата към държавата — egov.bg като истински единен портал по модела на borger.dk.</li>
+            <li>Задължителното работи само когато е удобно — с подготовка, кампании и жива помощ за уязвимите.</li>
+            <li>Многогодишни общи стратегии, които оцеляват при смяна на правителства.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="flag">ФИНЛАНДИЯ</div>
+        <h3>Държавата, която идва при теб</h3>
+        <p class="story">Финландия не започна с технологии, а с доверие. През 2017 г. страната събра всички държавни услуги на едно място — портала Suomi.fi. Интересното е кой дърпа конците: не отделно „дигитално министерство", а Министерството на финансите — така всяка реформа върви ръка за ръка с бюджета и се случва наистина. Днес финландецът получава официалните си писма в Suomi.fi Messages — защитена електронна кутия за връзка с институциите, а с няколко клика може да упълномощи близък да свърши нещо вместо него. С програмата AuroraAI (2020–2022) държавата опита нещо смело: изкуствен интелект, който сам предлага услуги според житейския момент — раждане на дете, нова работа, пенсиониране. И понеже всичко това иска умения, Финландия ги преподава от училището до библиотеката.</p>
+        <div class="mfacts">
+          <div class="mfact"><b>9-о място</b><span>в света по е-управление (ООН EGDI 2024)</span></div>
+          <div class="mfact"><b>82%</b><span>с базови дигитални умения — при 56% средно за ЕС</span></div>
+          <div class="mfact"><b>2017 г.</b><span>старт на единния портал Suomi.fi</span></div>
+          <div class="mfact"><b>2020–22 г.</b><span>AuroraAI — услуги според житейския момент</span></div>
+        </div>
+        <div class="mtake">
+          <b>КАКВО ПРЕНАСЯМЕ</b>
+          <ul>
+            <li>Един портал вместо десетки сайтове — услуги, съобщения и упълномощавания на едно място.</li>
+            <li>Дигитализацията да се води от институция с бюджетна власт, за да не остава на хартия.</li>
+            <li>Масова дигитална грамотност за всички поколения — от училището до библиотеката.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="flag">ИСЛАНДИЯ</div>
+        <h3>Малкият остров, който събра държавата в едно приложение</h3>
+        <p class="story">Исландия има по-малко жители от София — около 390 000 души. През 2018 г. тя решава, че малкият мащаб е предимство, а не оправдание: вместо да изобретява всичко сама, подписва споразумение с Естония и Финландия и взима наготово доказания естонски модел за обмен на данни, като го кръщава Straumurinn — „потокът". Идеята е проста: държавата пита сама себе си, а не гражданина. Данните остават при институцията, която ги притежава, и пътуват криптирани само при нужда. Върху този поток израства Ísland.is — един портал за всички услуги: от родителски отпуск до шофьорска книжка — дигитална още от 2020 г., а от 2021 г. и в общото мобилно приложение. За шест години Исландия влиза в топ 5 на света по дигитално управление.</p>
+        <div class="mfacts">
+          <div class="mfact"><b>2018 г.</b><span>старт на внедряването на Straumurinn (с Естония и Финландия)</span></div>
+          <div class="mfact"><b>2020 г.</b><span>дигитална шофьорска книжка в телефона</span></div>
+          <div class="mfact"><b>5-о място</b><span>в света по е-управление (ООН EGDI 2024)</span></div>
+          <div class="mfact"><b>30+</b><span>институции пренесоха сайтовете си в Ísland.is</span></div>
+        </div>
+        <div class="mtake">
+          <b>КАКВО ПРЕНАСЯМЕ</b>
+          <ul>
+            <li>Не изобретявай наново — доразвий доказаното, вместо всяка институция да строи от нулата.</li>
+            <li>Един вход за всичко — общ портал и приложение, в които институциите постепенно се пренасят.</li>
+            <li>Печели доверие с бързи, видими победи — услуги, които хората усещат веднага.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="event" id="event">
+  <div class="wrap">
+    <div class="kicker">СЪБИТИЕТО</div>
+    <h2>Национално представяне на инициативата</h2>
+    <p class="lead">Ще представим изследването, данните и плана на живо — и ще покажем как всеки може да се включи. Датата и мястото се уточняват; програмата по-долу е предварителна.</p>
+    <div class="prog">
+      <div class="slot"><span class="t">17:30</span><div><h4>Регистрация и networking</h4><p>Кафе и запознанства преди старта.</p></div></div>
+      <div class="slot"><span class="t">18:00</span><div><h4>Откриване: защо Младежки Фронт</h4><p>Мисията на инициативата и защо точно сега.</p></div></div>
+      <div class="slot"><span class="t">18:15</span><div><h4>Данните говорят</h4><p>Официалната статистика за е-управлението у нас — и какво означава тя за всеки от нас.</p></div></div>
+      <div class="slot"><span class="t">18:45</span><div><h4>Моделите: Естония, Дания, Финландия, Исландия</h4><p>Техническият анализ — какво направиха те и какво можем да пренесем.</p></div></div>
+      <div class="slot"><span class="t">19:30</span><div><h4>Как да се включиш</h4><p>Модулните проекти, ролите в екипа и следващите стъпки на инициативата.</p></div></div>
+      <div class="slot"><span class="t">20:00</span><div><h4>Дискусия и networking</h4><p>Отворен разговор с екипа.</p></div></div>
+    </div>
+    <div class="event-cta">
+      <span class="btn btn-soon" id="event-link">Линк за регистрация — очаквай скоро</span>
+      <span class="event-note">Междувременно се запиши по-долу — ще ти пишем първи, щом регистрацията отвори.</span>
+    </div>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <div class="kicker" style="color:#ffb3a8">ВКЛЮЧИ СЕ</div>
+    <h2>Фронтът се нуждае от теб</h2>
+    <p class="lead">Изследователи, комуникатори, организатори, дизайнери, юристи, ИТ хора — или просто граждани, на които им писна да чакат на опашка. Има място за всеки.</p>
+    <div class="jgrid">
+      <ul class="jwhy">
+        <li><b>Изследване и анализ</b> — работи по модулните проекти с екипа.</li>
+        <li><b>Комуникации</b> — помогни данните да стигнат до повече хора.</li>
+        <li><b>Събития</b> — организирай представянията и дискусиите.</li>
+        <li><b>Доброволец</b> — включи се, когато има нужда от ръце.</li>
+      </ul>
+      <form class="jform" action="https://formsubmit.co/gjelev99@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Ново включване — Младежки Фронт">
+        <input type="hidden" name="_next" value="https://leshnikotroshachkata1913.github.io/mladezhki-front/#join">
+        <input type="hidden" name="_language" value="bg">
+        <label for="f-name">Име</label>
+        <input id="f-name" type="text" name="име" required placeholder="Твоето име">
+        <label for="f-email">Имейл</label>
+        <input id="f-email" type="email" name="имейл" required placeholder="ти@пример.бг">
+        <label for="f-city">Град</label>
+        <input id="f-city" type="text" name="град" placeholder="София, Пловдив, Варна…">
+        <label for="f-role">Как искаш да помогнеш</label>
+        <select id="f-role" name="роля">
+          <option>Изследване и анализ</option>
+          <option>Комуникации</option>
+          <option>Събития</option>
+          <option>Доброволец</option>
+          <option>Още не знам — но искам да помогна</option>
+        </select>
+        <label for="f-msg">Съобщение (по желание)</label>
+        <textarea id="f-msg" name="съобщение" rows="3" placeholder="Разкажи ни за себе си"></textarea>
+        <button class="btn btn-ink" type="submit">Включи се в инициативата</button>
+        <div class="jnote">Ще получиш отговор от екипа. Без спам — само по същество.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <svg width="48" height="22" viewBox="0 0 100 45"><use href="#pxflag"/></svg>
+      <span class="logo-word">младежки <b>фронт</b></span>
+    </a>
+    <nav>
+      <a href="#about">Инициативата</a><a href="#data">Данните</a><a href="#models">Моделите</a><a href="#event">Събитието</a><a href="brand/">Бранд</a>
+    </nav>
+    <span style="font-size:13px">© 2026 Младежки Фронт · за дигитална България</span>
+  </div>
+</footer>
 
 </body>
 </html>
